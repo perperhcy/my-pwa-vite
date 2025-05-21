@@ -28,3 +28,29 @@ import HelloWorld from './components/HelloWorld.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+  const launchMode = isStandalone ? 'PWA 模式' : '浏览器模式'
+  document.getElementById('launch-mode').textContent = `当前打开方式：${launchMode}`
+})
+</script>
+
+<template>
+  <!-- 您的其他模板内容 -->
+</template>
+
+<style scoped>
+#launch-mode {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+</style>
